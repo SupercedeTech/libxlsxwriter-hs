@@ -16,6 +16,16 @@ import Control.Monad (when)
 data Worksheet_struct
 {#pointer *lxw_worksheet as Worksheet -> Worksheet_struct #}
 
+defColWidth :: Double
+defColWidth =
+  let double = id -- workaround the #define having a C cast: `(double)`
+  in {#const LXW_DEF_COL_WIDTH #}
+
+defRowHeight :: Double
+defRowHeight =
+  let double = id -- workaround the #define having a C cast: `(double)`
+  in {#const LXW_DEF_ROW_HEIGHT #}
+
 data RowColOptions = RowColOptions
   { rcoHidden :: Bool,
     -- | must be in range 0 <= level <= 7. TODO: Proper datatype
