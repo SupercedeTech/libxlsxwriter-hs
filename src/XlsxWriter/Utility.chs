@@ -12,7 +12,11 @@ import Foreign.C
 {#fun pure lxw_datetime_to_excel_datetime
   { id `DateTimePtr' } -> `Double' #}
 
-{-- TODO: header file has this function
+
+{#fun pure lxw_strerror
+   { `Error' } -> `String' #}
+
+{-- TODO: figure out version mismatch; header file has this function
 
 double lxw_datetime_to_excel_date_epoch(lxw_datetime *datetime, uint8_t date_1904);
 
