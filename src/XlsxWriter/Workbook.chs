@@ -9,6 +9,7 @@ import Foreign
 import Foreign.C
 import Data.ByteString
 {#import XlsxWriter.Common #}
+import XlsxWriter.Worksheet
 
 {#context lib="xlsxwriter" #}
 
@@ -50,5 +51,15 @@ instance Storable WorkbookOptions where
 
 {#fun unsafe workbook_new_opt
   { useAsCString* `ByteString', with* `WorkbookOptions' } -> `Workbook' #}
+
+-- Writing this one manually because importing certain aspects of
+-- Worksheet triggers unclear c2hs bugs:
+-- https://github.com/haskell/c2hs/issues/189
+workbook_add_worksheet :: Workbook -> ByteString -> IO Worksheet
+workbook_add_worksheet wb name = do
+  useAsCString name $ workbook_add_worksheet'_ wb
+
+foreign import ccall unsafe "XlsxWriter/Workbook.chs.h workbook_add_worksheet"
+  workbook_add_worksheet'_ :: Workbook -> Ptr CChar -> IO Worksheet
 
 {#fun unsafe workbook_close { id `Workbook' } -> `Error' #}
