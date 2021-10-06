@@ -1,5 +1,6 @@
 { pkgs ? import ./nixpkgs.nix,
-  compiler ? "ghc8104"
+  compiler ? "ghc8104",
+  returnShellEnv ? false # purposefully not lib.inNixShell b/c troubles with direnv
 }:
 
 let
@@ -15,4 +16,5 @@ hpkgs.developPackage {
         hpkgs.c2hs
       ]
     ) pkgs.libxlsxwriter;
+  inherit returnShellEnv;
 }
