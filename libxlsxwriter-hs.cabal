@@ -14,8 +14,7 @@ library
   ghc-options:          -Wall
   exposed-modules:
     XlsxWriter
-  other-modules:
-      XlsxWriter.Common
+    , XlsxWriter.Common
     , XlsxWriter.Format
     , XlsxWriter.Workbook
     , XlsxWriter.Worksheet
