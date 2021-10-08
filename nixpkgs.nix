@@ -4,7 +4,8 @@ let
   pkgs = import (builtins.fetchTarball url) {
     config = {
       packageOverrides = super: {
-        libxlsxwriter = super.libxlsxwriter.overrideAttrs (oldAttrs: rec {
+        libxlsxwriter = null;
+        xlsxwriter = super.libxlsxwriter.overrideAttrs (oldAttrs: rec {
           # use newer version to get dtoa flag
           version = "1.1.3";
           src = pkgs.fetchFromGitHub {

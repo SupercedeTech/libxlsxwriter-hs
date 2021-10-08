@@ -10,11 +10,12 @@ hpkgs.developPackage {
   root = ./.;
   withHoogle = false;
   modifier = drv: with pkgs.haskell.lib;
-    addExtraLibrary (
-      addBuildTools drv [
-        pkgs.cabal-install
-        hpkgs.c2hs
-      ]
-    ) pkgs.libxlsxwriter;
+    dontStrip (
+      addExtraLibrary (
+        addBuildTools drv [
+          pkgs.cabal-install
+          hpkgs.c2hs
+        ]
+      ) pkgs.libxlsxwriter);
   inherit returnShellEnv;
 }
