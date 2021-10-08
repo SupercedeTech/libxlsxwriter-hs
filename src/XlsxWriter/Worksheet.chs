@@ -35,20 +35,17 @@ data RowColOptions = RowColOptions
   deriving Show
 
 instance Storable RowColOptions where
-  sizeOf _ = {#sizeof lxw_row_col_options #}
-  alignment _ = {#alignof lxw_row_col_options #}
+  sizeOf _ = 3 -- c2hs outputs 4, but it should be 3: {#sizeof lxw_row_col_options #}
+  alignment _ = 1 -- c2hs outputs 1, but I don't trust it anymore {#alignof lxw_row_col_options #}
   peek p = do
     hidden <- (/= 0) <$> {#get lxw_row_col_options->hidden #} p
     level <- fromIntegral <$> {#get lxw_row_col_options->level #} p
     collapsed <- (/= 0) <$> {#get lxw_row_col_options->collapsed #} p
     pure $ RowColOptions hidden level collapsed
   poke p x = do
-    when (rcoHidden x) $
-      {#set lxw_row_col_options.hidden #} p 1
-    when (rcoLevel x /= 0) $
-      {#set lxw_row_col_options.level #} p (fromIntegral $ rcoLevel x)
-    when (rcoCollapsed x) $
-      {#set lxw_row_col_options.collapsed #} p 1
+    {#set lxw_row_col_options.hidden #} p $ if rcoHidden x then 1 else 0
+    {#set lxw_row_col_options.level #} p (fromIntegral $ rcoLevel x)
+    {#set lxw_row_col_options.collapsed #} p $ if rcoCollapsed x then 1 else 0
 
 {#pointer *lxw_row_col_options as RowColOptionsPtr -> RowColOptions #}
 
