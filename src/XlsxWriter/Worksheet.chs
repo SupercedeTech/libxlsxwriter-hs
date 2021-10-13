@@ -7,7 +7,6 @@ module XlsxWriter.Worksheet where
 import Foreign
 import Foreign.C
 import Data.ByteString
-import Control.Monad (when)
 {#import XlsxWriter.Common #}
 {#import XlsxWriter.Format #}
 
