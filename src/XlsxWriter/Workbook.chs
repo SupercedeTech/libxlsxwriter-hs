@@ -9,6 +9,7 @@ import Foreign
 import Foreign.C
 import Data.ByteString
 {#import XlsxWriter.Common #}
+{#import XlsxWriter.Format #}
 import XlsxWriter.Worksheet
 
 {#context lib="xlsxwriter" #}
@@ -61,5 +62,7 @@ workbook_add_worksheet wb name = do
 
 foreign import ccall unsafe "XlsxWriter/Workbook.chs.h workbook_add_worksheet"
   workbook_add_worksheet'_ :: Workbook -> Ptr CChar -> IO Worksheet
+
+{#fun unsafe workbook_add_format { id `Workbook' } -> `Format' id #}
 
 {#fun unsafe workbook_close { id `Workbook' } -> `Error' #}
