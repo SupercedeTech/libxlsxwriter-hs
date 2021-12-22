@@ -1,12 +1,12 @@
-name:                   libxlsxwriter-hs
-version:                0.0.0
-author:                 Supercede <tech@supercede.com>
-maintainer:             Supercede <tech@supercede.com>
-cabal-version:          >= 1.10
-build-type:             Simple
-extra-source-files:     README.md
-category:               FFI, Xlsx
-synopsis:               Bindings to libxlsxwriter
+name: libxlsxwriter-hs
+version: 0.0.0
+author: Supercede Technology Ltd
+maintainer: Supercede Technology Ltd <tech@supercede.com>
+cabal-version: >= 1.10
+build-type: Simple
+extra-source-files: README.md
+category: FFI, Xlsx
+synopsis: Bindings to libxlsxwriter
 
 tested-with: GHC == 8.10.4, GHC == 8.10.7
 
