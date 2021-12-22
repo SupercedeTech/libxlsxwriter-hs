@@ -19,6 +19,10 @@ library
     , XlsxWriter.Workbook
     , XlsxWriter.Worksheet
     , XlsxWriter.Utility
+
+-- TODO: Using the build-tool-depends field introduces issues with
+-- using this package from nix. Figure out what the issues are and
+-- resolve them.
 --  build-tool-depends: c2hs:c2hs
   extra-libraries: xlsxwriter
   build-depends:
