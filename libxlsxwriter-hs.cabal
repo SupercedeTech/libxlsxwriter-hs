@@ -2,7 +2,7 @@ name: libxlsxwriter-hs
 version: 0.1.0
 author: Supercede Technology Ltd
 maintainer: Supercede Technology Ltd <tech@supercede.com>
-license: BSD-3-Clause
+license: BSD3
 license-file: LICENSE
 cabal-version: >= 1.10
 build-type: Simple
