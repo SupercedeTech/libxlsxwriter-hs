@@ -9,6 +9,8 @@ build-type: Simple
 extra-source-files: README.md
 category: FFI, Xlsx
 synopsis: Bindings to libxlsxwriter
+description:
+  Bindings to the libxlsxwriter C library. Please refer to the upstream documentation.
 
 tested-with: GHC == 8.10.4, GHC == 8.10.7
 
